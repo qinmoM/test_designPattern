@@ -2,7 +2,8 @@
 // #include "SingletonPattern.h"
 // #include "SimpleFactory.h"
 // #include "Factory.h"
-#include "AbstractFactory.h"
+// #include "AbstractFactory.h"
+#include "Builder.h"
 
 int main()
 {
@@ -33,16 +34,30 @@ int main()
     // delete child2;
 
     // Abstract Factory
-    AbstractFactory* factory = new StandardFactory();
-    Computer* computer = factory->createComputer();
-    computer->display();
-    delete factory;
-    delete computer;
-    factory = new BasicFactory();
-    computer = factory->createComputer();
-    computer->display();
-    delete factory;
-    delete computer;
+    // AbstractFactory* factory = new StandardFactory();
+    // Computer* computer = factory->createComputer();
+    // computer->display();
+    // delete factory;
+    // delete computer;
+    // factory = new BasicFactory();
+    // computer = factory->createComputer();
+    // computer->display();
+    // delete factory;
+    // delete computer;
+
+    // Builder
+    Director* director = new Director();
+    Builder* builder_office = new OfficeBuilder();
+    Builder* builder_game = new GameBuilder();
+    Computer* computer_office = director->construct(builder_office);
+    Computer* computer_game = director->construct(builder_game);
+    std::cout << "Office Computer : " << computer_office->display() << std::endl;
+    std::cout << "Game Computer : " << computer_game->display() << std::endl;
+    delete director;
+    delete builder_office;
+    delete builder_game;
+    delete computer_office;
+    delete computer_game;
 
     return 0;
 }
