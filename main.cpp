@@ -3,7 +3,8 @@
 // #include "SimpleFactory.h"
 // #include "Factory.h"
 // #include "AbstractFactory.h"
-#include "Builder.h"
+// #include "Builder.h"
+#include "Prototype.h"
 
 int main()
 {
@@ -46,18 +47,32 @@ int main()
     // delete computer;
 
     // Builder
-    Director* director = new Director();
-    Builder* builder_office = new OfficeBuilder();
-    Builder* builder_game = new GameBuilder();
-    Computer* computer_office = director->construct(builder_office);
-    Computer* computer_game = director->construct(builder_game);
-    std::cout << "Office Computer : " << computer_office->display() << std::endl;
-    std::cout << "Game Computer : " << computer_game->display() << std::endl;
-    delete director;
-    delete builder_office;
-    delete builder_game;
-    delete computer_office;
-    delete computer_game;
+    // Director* director = new Director();
+    // Builder* builder_office = new OfficeBuilder();
+    // Builder* builder_game = new GameBuilder();
+    // Computer* computer_office = director->construct(builder_office);
+    // Computer* computer_game = director->construct(builder_game);
+    // std::cout << "Office Computer : " << computer_office->display() << std::endl;
+    // std::cout << "Game Computer : " << computer_game->display() << std::endl;
+    // delete director;
+    // delete builder_office;
+    // delete builder_game;
+    // delete computer_office;
+    // delete computer_game;
+
+    // Prototype
+    Character* minion = new Minion();
+    Character* boss = new Boss();
+    Character* copy1 = minion->clone();
+    Character* copy2 = boss->clone();
+    std::cout << "Minion HP : " << minion->display() << std::endl;
+    std::cout << "Boss HP : " << boss->display() << std::endl;
+    std::cout << "Copy1 HP : " << copy1->display() << std::endl;
+    std::cout << "Copy2 HP : " << copy2->display() << std::endl;
+    delete minion;
+    delete boss;
+    delete copy1;
+    delete copy2;
 
     return 0;
 }
