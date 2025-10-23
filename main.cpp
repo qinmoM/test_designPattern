@@ -4,7 +4,8 @@
 // #include "Factory.h"
 // #include "AbstractFactory.h"
 // #include "Builder.h"
-#include "Prototype.h"
+// #include "Prototype.h"
+#include "Adapter.h"
 
 int main()
 {
@@ -61,18 +62,33 @@ int main()
     // delete computer_game;
 
     // Prototype
-    Character* minion = new Minion();
-    Character* boss = new Boss();
-    Character* copy1 = minion->clone();
-    Character* copy2 = boss->clone();
-    std::cout << "Minion HP : " << minion->display() << std::endl;
-    std::cout << "Boss HP : " << boss->display() << std::endl;
-    std::cout << "Copy1 HP : " << copy1->display() << std::endl;
-    std::cout << "Copy2 HP : " << copy2->display() << std::endl;
-    delete minion;
-    delete boss;
-    delete copy1;
-    delete copy2;
+    // Character* minion = new Minion();
+    // Character* boss = new Boss();
+    // Character* copy1 = minion->clone();
+    // Character* copy2 = boss->clone();
+    // std::cout << "Minion HP : " << minion->display() << std::endl;
+    // std::cout << "Boss HP : " << boss->display() << std::endl;
+    // std::cout << "Copy1 HP : " << copy1->display() << std::endl;
+    // std::cout << "Copy2 HP : " << copy2->display() << std::endl;
+    // delete minion;
+    // delete boss;
+    // delete copy1;
+    // delete copy2;
+
+    // Adapter Class
+    // PNGProcessor* image1 = new AdapterJPG();
+    // PNGProcessor* image2 = new PNGProcessor();
+    // std::cout << image1->processPNG() << std::endl;
+    // std::cout << image2->processPNG() << std::endl;
+    // delete image1;
+    // delete image2;
+    // Adapter Object
+    Image* img1 = new AdapterJPG("/res/image.jpg");
+    Image* img2 = new AdapterPNG("/res/image.png");
+    std::cout << "img1 : " << img1->getImage() << std::endl;
+    std::cout << "img2 : " << img2->getImage() << std::endl;
+    delete img1;
+    delete img2;
 
     return 0;
 }
