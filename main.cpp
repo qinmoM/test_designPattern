@@ -5,7 +5,8 @@
 // #include "AbstractFactory.h"
 // #include "Builder.h"
 // #include "Prototype.h"
-#include "Adapter.h"
+// #include "Adapter.h"
+#include "Bridge.h"
 
 int main()
 {
@@ -83,12 +84,20 @@ int main()
     // delete image1;
     // delete image2;
     // Adapter Object
-    Image* img1 = new AdapterJPG("/res/image.jpg");
-    Image* img2 = new AdapterPNG("/res/image.png");
-    std::cout << "img1 : " << img1->getImage() << std::endl;
-    std::cout << "img2 : " << img2->getImage() << std::endl;
-    delete img1;
-    delete img2;
+    // Image* img1 = new AdapterJPG("/res/image.jpg");
+    // Image* img2 = new AdapterPNG("/res/image.png");
+    // std::cout << "img1 : " << img1->getImage() << std::endl;
+    // std::cout << "img2 : " << img2->getImage() << std::endl;
+    // delete img1;
+    // delete img2;
+
+    // Bridge
+    Body* body1 = new Body(new Red(), new Circle());
+    Body* body2 = new Body(new Green(), new Circle());
+    std::cout << "Body1 : " << body1->display() << std::endl;
+    std::cout << "Body2 : " << body2->display() << std::endl;
+    delete body1;
+    delete body2;
 
     return 0;
 }
