@@ -6,7 +6,8 @@
 // #include "Builder.h"
 // #include "Prototype.h"
 // #include "Adapter.h"
-#include "Bridge.h"
+// #include "Bridge.h"
+#include "Facade.h"
 
 int main()
 {
@@ -92,12 +93,21 @@ int main()
     // delete img2;
 
     // Bridge
-    Body* body1 = new Body(new Red(), new Circle());
-    Body* body2 = new Body(new Green(), new Circle());
-    std::cout << "Body1 : " << body1->display() << std::endl;
-    std::cout << "Body2 : " << body2->display() << std::endl;
-    delete body1;
-    delete body2;
+    // Body* body1 = new Body(new Red(), new Circle());
+    // Body* body2 = new Body(new Green(), new Circle());
+    // std::cout << "Body1 : " << body1->display() << std::endl;
+    // std::cout << "Body2 : " << body2->display() << std::endl;
+    // delete body1;
+    // delete body2;
+
+    // Facade
+    TV* tv = new TV();
+    SpeakerBluetooth* sb = new SpeakerBluetooth();
+    Housekeeper* hk = new Housekeeper();
+    std::cout << hk->watchTV(tv, sb) << std::endl;
+    delete tv;
+    delete sb;
+    delete hk;
 
     return 0;
 }
