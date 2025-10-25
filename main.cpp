@@ -7,7 +7,8 @@
 // #include "Prototype.h"
 // #include "Adapter.h"
 // #include "Bridge.h"
-#include "Facade.h"
+// #include "Facade.h"
+#include "Decorator.h"
 
 int main()
 {
@@ -101,13 +102,23 @@ int main()
     // delete body2;
 
     // Facade
-    TV* tv = new TV();
-    SpeakerBluetooth* sb = new SpeakerBluetooth();
-    Housekeeper* hk = new Housekeeper();
-    std::cout << hk->watchTV(tv, sb) << std::endl;
-    delete tv;
-    delete sb;
-    delete hk;
+    // TV* tv = new TV();
+    // SpeakerBluetooth* sb = new SpeakerBluetooth();
+    // Housekeeper* hk = new Housekeeper();
+    // std::cout << hk->watchTV(tv, sb) << std::endl;
+    // delete tv;
+    // delete sb;
+    // delete hk;
+
+    // Decorator
+    MilkTea* step1 = new IcedMilkTea();
+    MilkTea* step2 = new Lemon(step1);
+    step1 = nullptr;
+    MilkTea* step3 = new Orange(step2);
+    step2 = nullptr;
+    std::cout << "The price is " << step3->getPrice() << ".\n" << std::endl;
+    std::cout << step3->ingredientsList() << std::endl;
+    delete step3;
 
     return 0;
 }
