@@ -9,7 +9,8 @@
 // #include "Bridge.h"
 // #include "Facade.h"
 // #include "Decorator.h"
-#include "Proxy.h"
+// #include "Proxy.h"
+#include "Composite.h"
 
 int main()
 {
@@ -122,11 +123,25 @@ int main()
     // delete step3;
 
     // Proxy
-    ProxyImage* proxy = new ProxyImage("jenny");
-	proxy->loadImage("jenny", "D:/download/0.png");
-	std::cout << proxy->render("join") << std::endl;
-	std::cout << proxy->render("jenny") << std::endl;
-	delete proxy;
+    // ProxyImage* proxy = new ProxyImage("jenny");
+	// proxy->loadImage("jenny", "D:/download/0.png");
+	// std::cout << proxy->render("join") << std::endl;
+	// std::cout << proxy->render("jenny") << std::endl;
+	// delete proxy;
+
+    // Composite
+    Component* file1 = new File("10001.png", 12);
+	Component* file2 = new File("11.wav", 1476);
+	Component* folder = new Folder("res");
+	folder->add(file1);
+	folder->add(file2);
+	std::cout << folder->getSize() << std::endl;
+	folder->remove(file1);
+	folder->remove(file2);
+	std::cout << folder->getSize() << std::endl;
+	delete file1;
+	delete file2;
+	delete folder;
 
     return 0;
 }
