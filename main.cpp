@@ -8,7 +8,8 @@
 // #include "Adapter.h"
 // #include "Bridge.h"
 // #include "Facade.h"
-#include "Decorator.h"
+// #include "Decorator.h"
+#include "Proxy.h"
 
 int main()
 {
@@ -111,14 +112,21 @@ int main()
     // delete hk;
 
     // Decorator
-    MilkTea* step1 = new IcedMilkTea();
-    MilkTea* step2 = new Lemon(step1);
-    step1 = nullptr;
-    MilkTea* step3 = new Orange(step2);
-    step2 = nullptr;
-    std::cout << "The price is " << step3->getPrice() << ".\n" << std::endl;
-    std::cout << step3->ingredientsList() << std::endl;
-    delete step3;
+    // MilkTea* step1 = new IcedMilkTea();
+    // MilkTea* step2 = new Lemon(step1);
+    // step1 = nullptr;
+    // MilkTea* step3 = new Orange(step2);
+    // step2 = nullptr;
+    // std::cout << "The price is " << step3->getPrice() << ".\n" << std::endl;
+    // std::cout << step3->ingredientsList() << std::endl;
+    // delete step3;
+
+    // Proxy
+    ProxyImage* proxy = new ProxyImage("jenny");
+	proxy->loadImage("jenny", "D:/download/0.png");
+	std::cout << proxy->render("join") << std::endl;
+	std::cout << proxy->render("jenny") << std::endl;
+	delete proxy;
 
     return 0;
 }
