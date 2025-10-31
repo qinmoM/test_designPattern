@@ -10,7 +10,8 @@
 // #include "Facade.h"
 // #include "Decorator.h"
 // #include "Proxy.h"
-#include "Composite.h"
+// #include "Composite.h"
+#include "Flyweight.h"
 
 int main()
 {
@@ -130,18 +131,35 @@ int main()
 	// delete proxy;
 
     // Composite
-    Component* file1 = new File("10001.png", 12);
-	Component* file2 = new File("11.wav", 1476);
-	Component* folder = new Folder("res");
-	folder->add(file1);
-	folder->add(file2);
-	std::cout << folder->getSize() << std::endl;
-	folder->remove(file1);
-	folder->remove(file2);
-	std::cout << folder->getSize() << std::endl;
-	delete file1;
-	delete file2;
-	delete folder;
+    // Component* file1 = new File("10001.png", 12);
+	// Component* file2 = new File("11.wav", 1476);
+	// Component* folder = new Folder("res");
+	// folder->add(file1);
+	// folder->add(file2);
+	// std::cout << folder->getSize() << std::endl;
+	// folder->remove(file1);
+	// folder->remove(file2);
+	// std::cout << folder->getSize() << std::endl;
+	// delete file1;
+	// delete file2;
+	// delete folder;
+
+    // Flyweight
+    Factory* fact = new Factory(2);
+    for (int i = 0; i < 3; ++i)
+    {
+        FlyweightBike* temp = fact->apply();
+        if(temp)
+        {
+            std::cout << i << " application is successful.";
+        }
+        else
+        {
+            std::cout << i << " application isn't successful.";
+        }
+        std::cout << std::endl;
+    }
+    delete fact;
 
     return 0;
 }
