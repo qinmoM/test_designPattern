@@ -11,7 +11,9 @@
 // #include "Decorator.h"
 // #include "Proxy.h"
 // #include "Composite.h"
-#include "Flyweight.h"
+// #include "Flyweight.h"
+// #include "ChainResponsibility.h"
+#include "State.h"
 
 int main()
 {
@@ -145,21 +147,36 @@ int main()
 	// delete folder;
 
     // Flyweight
-    Factory* fact = new Factory(2);
-    for (int i = 0; i < 3; ++i)
-    {
-        FlyweightBike* temp = fact->apply();
-        if(temp)
-        {
-            std::cout << i << " application is successful.";
-        }
-        else
-        {
-            std::cout << i << " application isn't successful.";
-        }
-        std::cout << std::endl;
-    }
-    delete fact;
+    // Factory* fact = new Factory(2);
+    // for (int i = 0; i < 3; ++i)
+    // {
+    //     FlyweightBike* temp = fact->apply();
+    //     if(temp)
+    //     {
+    //         std::cout << i << " application is successful.";
+    //     }
+    //     else
+    //     {
+    //         std::cout << i << " application isn't successful.";
+    //     }
+    //     std::cout << std::endl;
+    // }
+    // delete fact;
+
+    // chain of responsibility
+    // LoggerBase* base = new SmallLogger();
+    // LoggerBase* large = new LargeLogger();
+    // base->setNext(large);
+    // base->logMessage("");
+    // base->logMessage("hhhhhhhhhhhhhhhhhhhhhhhh");
+    // delete large;
+    // delete base;
+
+    // state
+    Light* light = new Light();
+    std::cout << light->getState() << std::endl;
+    light->pressSwitch();
+    std::cout << light->getState() << std::endl;
 
     return 0;
 }
