@@ -13,7 +13,8 @@
 // #include "Composite.h"
 // #include "Flyweight.h"
 // #include "ChainResponsibility.h"
-#include "State.h"
+// #include "State.h"
+#include "Observer.h"
 
 int main()
 {
@@ -173,10 +174,20 @@ int main()
     // delete base;
 
     // state
-    Light* light = new Light();
-    std::cout << light->getState() << std::endl;
-    light->pressSwitch();
-    std::cout << light->getState() << std::endl;
+    // Light* light = new Light();
+    // std::cout << light->getState() << std::endl;
+    // light->pressSwitch();
+    // std::cout << light->getState() << std::endl;
+
+    // observer
+    std::shared_ptr<SubjectTemp> station = std::make_shared<SubjectTemp>(28.0f);
+    std::shared_ptr<Phone> phoneA = std::make_shared<Phone>(1);
+    std::shared_ptr<Phone> phoneB = std::make_shared<Phone>(2);
+    station->push(phoneA);
+    station->push(phoneB);
+
+    station->setTemp(22.5f);
+    station->setTemp(20.5f);
 
     return 0;
 }
