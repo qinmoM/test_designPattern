@@ -17,7 +17,8 @@
 // #include "State.h"
 // #include "Observer.h"
 // #include "Memento.h"
-#include "Mediator.h"
+// #include "Mediator.h"
+#include "Iterator.h"
 
 int main()
 {
@@ -200,13 +201,22 @@ int main()
     // std::cout << editor->getText() << std::endl;
 
     // mediator
-    std::shared_ptr<ChatRoom> chat = std::make_shared<ChatRoom>();
-    std::shared_ptr<User> user1 = std::make_shared<Colleague>(1, chat);
-    std::shared_ptr<User> user2 = std::make_shared<Colleague>(2, chat);
-    chat->add(user1);
-    chat->add(user2);
-    user1->send("Hello world!");
-    user2->send("What are you doing?");
+    // std::shared_ptr<ChatRoom> chat = std::make_shared<ChatRoom>();
+    // std::shared_ptr<User> user1 = std::make_shared<Colleague>(1, chat);
+    // std::shared_ptr<User> user2 = std::make_shared<Colleague>(2, chat);
+    // chat->add(user1);
+    // chat->add(user2);
+    // user1->send("Hello world!");
+    // user2->send("What are you doing?");
 
+    // iterator
+    List list;
+    list.add("hello");
+    list.add("world");
+    ListIterator it(list.getHead());
+    while (it.hasNext())
+    {
+        std::cout << it.next() << " ";
+    }
     return 0;
 }
