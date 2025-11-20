@@ -1,4 +1,5 @@
 #include <iostream>
+#include <memory>
 // #include "SingletonPattern.h"
 // #include "SimpleFactory.h"
 // #include "Factory.h"
@@ -14,7 +15,8 @@
 // #include "Flyweight.h"
 // #include "ChainResponsibility.h"
 // #include "State.h"
-#include "Observer.h"
+// #include "Observer.h"
+#include "Memento.h"
 
 int main()
 {
@@ -180,14 +182,21 @@ int main()
     // std::cout << light->getState() << std::endl;
 
     // observer
-    std::shared_ptr<SubjectTemp> station = std::make_shared<SubjectTemp>(28.0f);
-    std::shared_ptr<Phone> phoneA = std::make_shared<Phone>(1);
-    std::shared_ptr<Phone> phoneB = std::make_shared<Phone>(2);
-    station->push(phoneA);
-    station->push(phoneB);
+    // std::shared_ptr<SubjectTemp> station = std::make_shared<SubjectTemp>(28.0f);
+    // std::shared_ptr<Phone> phoneA = std::make_shared<Phone>(1);
+    // std::shared_ptr<Phone> phoneB = std::make_shared<Phone>(2);
+    // station->push(phoneA);
+    // station->push(phoneB);
+    // station->setTemp(22.5f);
+    // station->setTemp(20.5f);
 
-    station->setTemp(22.5f);
-    station->setTemp(20.5f);
+    // memento
+    std::unique_ptr<TextEditor> editor = std::make_unique<TextEditor>("1234");
+    editor->save();
+    editor->setText(editor->getText() + "56");
+    std::cout << editor->getText() << std::endl;
+    editor->undo();
+    std::cout << editor->getText() << std::endl;
 
     return 0;
 }
