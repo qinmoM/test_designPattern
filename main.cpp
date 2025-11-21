@@ -19,7 +19,8 @@
 // #include "Memento.h"
 // #include "Mediator.h"
 // #include "Iterator.h"
-#include "Strategy.h"
+// #include "Strategy.h"
+#include "Visitor.h"
 
 int main()
 {
@@ -221,13 +222,22 @@ int main()
     // }
 
     // Strategy
-    std::unique_ptr<Order> order = std::make_unique<Order>();
-    std::unique_ptr<Strategy> a = std::make_unique<AlipayStrategy>();
-    order->setStrategy(std::move(a));
-    order->pay(100.0);
-    std::unique_ptr<Strategy> w = std::make_unique<WechatStrategy>();
-    order->setStrategy(std::move(w));
-    order->pay(30.0);
+    // std::unique_ptr<Order> order = std::make_unique<Order>();
+    // std::unique_ptr<Strategy> a = std::make_unique<AlipayStrategy>();
+    // order->setStrategy(std::move(a));
+    // order->pay(100.0);
+    // std::unique_ptr<Strategy> w = std::make_unique<WechatStrategy>();
+    // order->setStrategy(std::move(w));
+    // order->pay(30.0);
+
+    // visitor
+    std::shared_ptr<Shop> shop = std::make_shared<Shop>("LiHua");
+    std::shared_ptr<Community> community = std::make_shared<Community>("JinYan");
+    std::shared_ptr<Visitor> cleaner = std::make_shared<Cleaner>();
+    std::shared_ptr<Visitor> repairman = std::make_shared<Repairman>();
+    shop->accept(cleaner);
+    community->accept(cleaner);
+    community->accept(repairman);
 
     return 0;
 }
