@@ -22,7 +22,8 @@
 // #include "Strategy.h"
 // #include "Visitor.h"
 // #include "Command.h"
-#include "TemplateMethod.h"
+// #include "TemplateMethod.h"
+#include "Interpreter.h"
 
 int main()
 {
@@ -257,8 +258,11 @@ int main()
     // delete off;
 
     // template method
-    std::unique_ptr<AbstractClass> t1 = std::make_unique<Component>();
-    t1->templateMethod();
+    // std::unique_ptr<AbstractClass> t1 = std::make_unique<Component>();
+    // t1->templateMethod();
+
+    // Interpreter
+    std::cout << build("10+20+30+2")->interpret() << std::endl;
 
     return 0;
 }
