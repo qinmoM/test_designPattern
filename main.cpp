@@ -18,7 +18,8 @@
 // #include "Observer.h"
 // #include "Memento.h"
 // #include "Mediator.h"
-#include "Iterator.h"
+// #include "Iterator.h"
+#include "Strategy.h"
 
 int main()
 {
@@ -210,13 +211,23 @@ int main()
     // user2->send("What are you doing?");
 
     // iterator
-    List list;
-    list.add("hello");
-    list.add("world");
-    ListIterator it(list.getHead());
-    while (it.hasNext())
-    {
-        std::cout << it.next() << " ";
-    }
+    // List list;
+    // list.add("hello");
+    // list.add("world");
+    // ListIterator it(list.getHead());
+    // while (it.hasNext())
+    // {
+    //     std::cout << it.next() << " ";
+    // }
+
+    // Strategy
+    std::unique_ptr<Order> order = std::make_unique<Order>();
+    std::unique_ptr<Strategy> a = std::make_unique<AlipayStrategy>();
+    order->setStrategy(std::move(a));
+    order->pay(100.0);
+    std::unique_ptr<Strategy> w = std::make_unique<WechatStrategy>();
+    order->setStrategy(std::move(w));
+    order->pay(30.0);
+
     return 0;
 }
