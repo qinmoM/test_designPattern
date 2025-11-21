@@ -21,7 +21,8 @@
 // #include "Iterator.h"
 // #include "Strategy.h"
 // #include "Visitor.h"
-#include "Command.h"
+// #include "Command.h"
+#include "TemplateMethod.h"
 
 int main()
 {
@@ -241,19 +242,23 @@ int main()
     // community->accept(repairman);
 
     // command
-    Light* light = new Light();
-    Control* control = new Control(light);
-    Command* on = new CommandTurnOn();
-    Command* off = new CommandTurnOff();
-    control->switchover(on);
-    control->execute();
-    control->execute();
-    control->switchover(off);
-    control->execute();
-    delete light;
-    delete control;
-    delete on;
-    delete off;
+    // Light* light = new Light();
+    // Control* control = new Control(light);
+    // Command* on = new CommandTurnOn();
+    // Command* off = new CommandTurnOff();
+    // control->switchover(on);
+    // control->execute();
+    // control->execute();
+    // control->switchover(off);
+    // control->execute();
+    // delete light;
+    // delete control;
+    // delete on;
+    // delete off;
+
+    // template method
+    std::unique_ptr<AbstractClass> t1 = std::make_unique<Component>();
+    t1->templateMethod();
 
     return 0;
 }
