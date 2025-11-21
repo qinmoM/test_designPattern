@@ -20,7 +20,8 @@
 // #include "Mediator.h"
 // #include "Iterator.h"
 // #include "Strategy.h"
-#include "Visitor.h"
+// #include "Visitor.h"
+#include "Command.h"
 
 int main()
 {
@@ -231,13 +232,28 @@ int main()
     // order->pay(30.0);
 
     // visitor
-    std::shared_ptr<Shop> shop = std::make_shared<Shop>("LiHua");
-    std::shared_ptr<Community> community = std::make_shared<Community>("JinYan");
-    std::shared_ptr<Visitor> cleaner = std::make_shared<Cleaner>();
-    std::shared_ptr<Visitor> repairman = std::make_shared<Repairman>();
-    shop->accept(cleaner);
-    community->accept(cleaner);
-    community->accept(repairman);
+    // std::shared_ptr<Shop> shop = std::make_shared<Shop>("LiHua");
+    // std::shared_ptr<Community> community = std::make_shared<Community>("JinYan");
+    // std::shared_ptr<Visitor> cleaner = std::make_shared<Cleaner>();
+    // std::shared_ptr<Visitor> repairman = std::make_shared<Repairman>();
+    // shop->accept(cleaner);
+    // community->accept(cleaner);
+    // community->accept(repairman);
+
+    // command
+    Light* light = new Light();
+    Control* control = new Control(light);
+    Command* on = new CommandTurnOn();
+    Command* off = new CommandTurnOff();
+    control->switchover(on);
+    control->execute();
+    control->execute();
+    control->switchover(off);
+    control->execute();
+    delete light;
+    delete control;
+    delete on;
+    delete off;
 
     return 0;
 }
